@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">
+		<script>
+			import { onMount } from "svelte";
+			
+			let resizedImage;
+			function resizeImage() {
+				const img = document.getElementById("image");
+				const canvas = document.createElement("canvas");
+				const ctx = canvas.getContext("2d");
+
+				canvas.width = 300; // set the desired width
+				canvas.height = (img.height / img.width) * canvas.width;
+
+				ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+				resizedImage = canvas.toDataURL("image/jpeg");
+			}
+			onMount(resizeImage);
+
+
+		</script>
+
+		<main>
+			<button>
+				<header class="heading">Image Resizer</header>
+			</button>
+			<div id="app">
+				<br><br>
+				<h2> Upload Image</h2>
+
+
+				<img class="avatar" src="{avatar}" alt="" />
+
+				<img class="avatar" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+					alt="" />
+				<br>
+				<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" />
+				<br>
+				<div class="chan">
+					<!-- <button id="chimg">  -->
+					<input type="file" name="image" accept=".jpg, .jpeg, .png" style="display: none;" />
+					<label for="file">Select Imaage :</label>
+					<!--
+					 <select name="ct" style="background-color: transparent; border: 2px solid black; border-radius: 25px; font-size: medium;" >
+						<option >From Device</option>
+						<option >From Dropbox</option>
+						<option >From Google Drive</option>
+						<option >From URL</option>
+					 </select>
+					 -->
+					<!-- </button> -->
+				</div>
+
+
+			</div>
+			<div class="footer">
+
+				<div class="groups">
+
+					<div class="perfect">
+						<h2 class="font-semibold"><span><span class="false">Perfect quality</span></span></h2>
+						<p class="perfecta"><span>
+								<span class="false">The best online image resizer<br> to resize
+									your images at the highest quality.</span></span></p>
+					</div>
+
+					<div id="lightning">
+
+						<h2 class="font-semibold"><span><span class="false">Lightning
+									Fast</span></span></h2>
+						<p class="text-center"><span><span class="false">This cloud-hosted, highly scalable<br> tool
+									can resize your images within seconds!</span></span></p>
+					</div>
+					<div class="easy">
+						<h2 class="font-semibold"><span><span class="false">Easy To
+									Use</span></span></h2>
+						<p class="subeasy"><span><span class="false">Simply upload your image and enter a
+									<br> size. It's as easy as that!</span></span></p>
+					</div>
+					<div class="work">
+						<h2 class="font-semibold"><span><span class="false">Works
+									Anywhere</span></span></h2>
+						<p class="subwork"><span><span class="false">ImageResizer.com is browser-based(no
+									software to install)<br>.It works on any platform (Windows, Linux,
+									Mac).</span></span></p>
+					</div>
+					<div class="privacy">
+						<h2 class="font-semibold"><span><span class="false">Privacy
+									Guaranteed</span></span></h2>
+						<p class="subprivacy"><span><span class="false">Your images are uploaded via <br> secure
+									256-bit encrypted SSL connection and <br> deleted automatically within 6
+									hours.</span></span></p>
+					</div>
+					<div class="free">
+						<h2 class="font-semibold"><span><span class="false">It's Free</span></span>
+						</h2>
+						<p class="subfree"><span><span class="false">Since 2012 we have resized millions of
+									images <br> for free! There is no software to install, registrations, or
+									watermarks.</span></span></p>
+					</div>
+				</div>
+			</div>
+	</div>
+	</main>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.avatar {
+			height: 200px;
+		}
+
+		/* #chimg {
+			background-color: transparent;
+			cursor: pointer;
+		} */
+
+		.heading {
+			font-size: 25px;
+			margin-top: 2px;
+
+			font-family: Georgia, serif;
+			background: #7da7b3;
+			border-radius: 25px;
+			padding-left: 25em;
+			padding-right: 25em;
+		}
+
+		button {
+			border-radius: 25px;
+		}
+
+		main {
+			text-align: center;
+			padding: 20px;
+			background: #57b2aa;
+			height: 100%;
+
+		}
+
+		h1 {
+			margin-bottom: 30px;
+			padding-left: 25em;
+			padding-right: 25em;
+		}
+
+		h2 {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		img {
+			max-width: 100%;
+			margin-bottom: 20px;
+		}
+
+		.subfree {
+			padding-left: 127px;
+			padding-right: 127px;
+		}
+
+		.perfect {
+			float: left;
+			padding-left: 51px;
+
+		}
+
+		#lightning {
+			float: right;
+
+		}
+
+		.easy {
+			text-align: center;
+
+		}
+
+		.work {
+			float: left;
+			padding-top: 60px;
+		}
+
+		.privacy {
+			float: right;
+			padding-top: 60px;
+		}
+
+		.free {
+			padding-top: 60px;
+			text-align: center;
+		}
+
+		label {
+			background-color: transparent;
+			cursor: pointer;
+			border: 2px solid black;
+			border-radius: 25px;
+			padding-left: 4px;
+			padding-right: 4px;
+		}
+
+		label:hover {
+			box-shadow: inset 1px 1px 17px rgb(5, 48, 134);
+			font-size: medium;
+		}
+
+
+	</style>
+	</div>
+</body>
+
+</html>
